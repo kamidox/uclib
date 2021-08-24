@@ -22,8 +22,8 @@ struct _map_t;
 typedef struct _map_t map_t;
 
 typedef struct _key_value_t {
-  str_t* key;
-  value_t value;
+    str_t* key;
+    value_t value;
 } key_value_t;
 
 /**

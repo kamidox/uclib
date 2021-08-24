@@ -19,13 +19,13 @@ BEGIN_C_DECLS
  * 事件。
  */
 typedef struct _event_t {
-  uint32_t ref;
-  /**
-   * @property {str_t*} type
-   * 事件类型。
-   */
-  str_t* type;
-  map_t* params;
+    uint32_t ref;
+    /**
+     * @property {str_t*} type
+     * 事件类型。
+     */
+    str_t* type;
+    map_t* params;
 } event_t;
 
 /**

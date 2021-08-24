@@ -31,18 +31,18 @@ typedef value_t (*obj_get_t)(obj_t* obj);
  * 通用的对象。提供通用的属性设置/获取函数，和事件注册/分发功能。
  */
 struct _obj_t {
-  uint16_t ref;
-  uint16_t magic;
-  emitter_t* emitter;
+    uint16_t ref;
+    uint16_t magic;
+    emitter_t* emitter;
 
-  /*
-   * 下列函数指针需要子类初始化。
-   */
-  obj_dup_t dup;
-  obj_copy_t copy;
-  obj_destroy_t destroy;
-  obj_set_prop_t set_prop;
-  obj_get_prop_t get_prop;
+    /*
+     * 下列函数指针需要子类初始化。
+     */
+    obj_dup_t dup;
+    obj_copy_t copy;
+    obj_destroy_t destroy;
+    obj_set_prop_t set_prop;
+    obj_get_prop_t get_prop;
 };
 
 /**

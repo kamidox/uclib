@@ -17,23 +17,23 @@
 #endif
 
 struct _thread_t {
-  void* args;
-  bool_t running;
-  thread_handle_t thread;
-  thread_entry_t entry;
+    void* args;
+    bool_t running;
+    thread_handle_t thread;
+    thread_entry_t entry;
 };
 
 thread_t* thread_create(thread_entry_t entry, void* args) {
-  thread_t* thread = NULL;
-  return_value_if_fail(entry != NULL, NULL);
+    thread_t* thread = NULL;
+    return_value_if_fail(entry != NULL, NULL);
 
-  thread = (thread_t*)calloc(1, sizeof(thread_t));
-  return_value_if_fail(thread != NULL, NULL);
+    thread = (thread_t*)calloc(1, sizeof(thread_t));
+    return_value_if_fail(thread != NULL, NULL);
 
-  thread->args = args;
-  thread->entry = entry;
+    thread->args = args;
+    thread->entry = entry;
 
-  return thread;
+    return thread;
 }
 
 #ifdef WIN32
@@ -41,56 +41,56 @@ static unsigned __stdcall entry(void* arg) {
 #else
 static void* entry(void* arg) {
 #endif
-  thread_t* thread = (thread_t*)arg;
+    thread_t* thread = (thread_t*)arg;
 
-  thread->entry(thread->args);
-  thread->running = FALSE;
+    thread->entry(thread->args);
+    thread->running = FALSE;
 #ifdef WIN32
-  return 0;
+    return 0;
 #else
-  return NULL;
+    return NULL;
 #endif
 }
 
 bool_t thread_start(thread_t* thread) {
 #ifdef WIN32
-  unsigned h = 0;
-  uint32_t stack_size = 1024 * 1024;
-  return_value_if_fail(thread != NULL, FALSE);
+    unsigned h = 0;
+    uint32_t stack_size = 1024 * 1024;
+    return_value_if_fail(thread != NULL, FALSE);
 
-  stack_size = 1024 * 1024;
-  thread->thread = (HANDLE)_beginthreadex(NULL, 0, entry, thread, 0, &h);
-  thread->running = thread->thread != NULL;
+    stack_size = 1024 * 1024;
+    thread->thread = (HANDLE)_beginthreadex(NULL, 0, entry, thread, 0, &h);
+    thread->running = thread->thread != NULL;
 #else
-  return_value_if_fail(thread != NULL, FALSE);
+    return_value_if_fail(thread != NULL, FALSE);
 
-  int ret = pthread_create(&(thread->thread), NULL, entry, thread);
-  thread->running = ret == 0;
+    int ret = pthread_create(&(thread->thread), NULL, entry, thread);
+    thread->running = ret == 0;
 #endif
 
-  return thread->running;
+    return thread->running;
 }
 
 bool_t thread_join(thread_t* thread) {
-  return_value_if_fail(thread != NULL, FALSE);
-  if (thread->running) {
+    return_value_if_fail(thread != NULL, FALSE);
+    if (thread->running) {
 #ifdef WIN32
-    WaitForSingleObject(thread->thread, INFINITE);
+        WaitForSingleObject(thread->thread, INFINITE);
 #else
-    void* ret = NULL;
-    if (thread->thread) {
-      pthread_join(thread->thread, &ret);
-    }
+        void* ret = NULL;
+        if (thread->thread) {
+            pthread_join(thread->thread, &ret);
+        }
 #endif
-  }
+    }
 
-  return TRUE;
+    return TRUE;
 }
 
 void thread_destroy(thread_t* thread) {
-  return_if_fail(thread != NULL);
-  memset(thread, 0x00, sizeof(thread_t));
-  free(thread);
+    return_if_fail(thread != NULL);
+    memset(thread, 0x00, sizeof(thread_t));
+    free(thread);
 
-  return;
+    return;
 }

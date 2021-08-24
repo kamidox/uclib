@@ -18,10 +18,10 @@ BEGIN_C_DECLS
  * 动态数组，根据数据项的个数自动扩展数组的长度。
  */
 typedef struct _array_t {
-  value_t* data;
-  uint32_t size;
+    value_t* data;
+    uint32_t size;
 
-  uint32_t capacity;
+    uint32_t capacity;
 } array_t;
 
 /**

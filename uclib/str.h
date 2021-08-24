@@ -17,18 +17,18 @@ BEGIN_C_DECLS
  * 字符串对象。
  */
 typedef struct _str_t {
-  uint16_t ref;
-  /**
-   * @property {uint32_t} size
-   * 字符串的长度。
-   */
-  uint32_t size;
-  uint32_t capacity;
-  /**
-   * @property {char*} str
-   * 字符串的内容。
-   */
-  char* str;
+    uint16_t ref;
+    /**
+     * @property {uint32_t} size
+     * 字符串的长度。
+     */
+    uint32_t size;
+    uint32_t capacity;
+    /**
+     * @property {char*} str
+     * 字符串的内容。
+     */
+    char* str;
 } str_t;
 
 /**

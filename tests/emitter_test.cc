@@ -22,14 +22,14 @@ TEST(emitter, basic) {
 
     event_t* event = event_create(EVENT_NAME);
     emitter_t* emitter = emitter_create();
-    ASSERT_EQ(TRUE, emitter_on(emitter, EVENT_NAME, on_event, &count)); 
+    ASSERT_EQ(TRUE, emitter_on(emitter, EVENT_NAME, on_event, &count));
 
     for(i = 0; i < n; i++) {
         ASSERT_EQ(TRUE, emitter_emit(emitter, event));
         ASSERT_EQ(count, i+1);
     }
-    
-    ASSERT_EQ(TRUE, emitter_off(emitter, EVENT_NAME, on_event, &count)); 
+
+    ASSERT_EQ(TRUE, emitter_off(emitter, EVENT_NAME, on_event, &count));
     event_unref(event);
     emitter_destroy(emitter);
 }

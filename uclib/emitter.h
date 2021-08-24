@@ -19,7 +19,7 @@ BEGIN_C_DECLS
  * 事件发射器。相当于观察者模式中被观察的对象，提供事件注册、注销和分发功能。
  */
 typedef struct _emitter_t {
-  map_t* listeners;
+    map_t* listeners;
 } emitter_t;
 
 typedef bool_t (*on_event_t)(void* ctx, event_t* event);

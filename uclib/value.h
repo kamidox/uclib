@@ -18,20 +18,20 @@ BEGIN_C_DECLS
 
 /*数据类型定义*/
 typedef enum _value_type_t {
-  VALUE_TYPE_INVALID = 0,
-  VALUE_TYPE_INT8,
-  VALUE_TYPE_UINT8,
-  VALUE_TYPE_INT16,
-  VALUE_TYPE_UINT16,
-  VALUE_TYPE_INT32,
-  VALUE_TYPE_UINT32,
-  VALUE_TYPE_INT64,
-  VALUE_TYPE_UINT64,
-  VALUE_TYPE_POINTER,
-  VALUE_TYPE_FLOAT32,
-  VALUE_TYPE_FLOAT64,
-  VALUE_TYPE_STRING,
-  VALUE_TYPE_OBJECT
+    VALUE_TYPE_INVALID = 0,
+    VALUE_TYPE_INT8,
+    VALUE_TYPE_UINT8,
+    VALUE_TYPE_INT16,
+    VALUE_TYPE_UINT16,
+    VALUE_TYPE_INT32,
+    VALUE_TYPE_UINT32,
+    VALUE_TYPE_INT64,
+    VALUE_TYPE_UINT64,
+    VALUE_TYPE_POINTER,
+    VALUE_TYPE_FLOAT32,
+    VALUE_TYPE_FLOAT64,
+    VALUE_TYPE_STRING,
+    VALUE_TYPE_OBJECT
 } value_type_t;
 
 /**
@@ -39,23 +39,23 @@ typedef enum _value_type_t {
  * 一个通用数据类型，用来存放整数、浮点数、obj_t、str_t和其它对象。
  */
 typedef struct _value_t {
-  uint32_t type;
-  union {
-    int8_t i8;
-    uint8_t u8;
-    int16_t i16;
-    uint16_t u16;
-    int32_t i32;
-    uint32_t u32;
-    int64_t i64;
-    uint64_t u64;
-    float f32;
-    double f64;
+    uint32_t type;
+    union {
+        int8_t i8;
+        uint8_t u8;
+        int16_t i16;
+        uint16_t u16;
+        int32_t i32;
+        uint32_t u32;
+        int64_t i64;
+        uint64_t u64;
+        float f32;
+        double f64;
 
-    pointer_t ptr;
-    struct _str_t* str;
-    struct _obj_t* obj;
-  } value;
+        pointer_t ptr;
+        struct _str_t* str;
+        struct _obj_t* obj;
+    } value;
 } value_t;
 
 /**

@@ -1,9 +1,9 @@
 /**
- * ¹¦ÄÜËµÃ÷£º
- *     1.»ù±¾ÀàĞÍ¶¨Òå¡£
+ * åŠŸèƒ½è¯´æ˜ï¼š
+ *     1.åŸºæœ¬ç±»å‹å®šä¹‰ã€‚
  *
- * ĞŞ¸ÄÀúÊ·£º
- *     1.2017-4-30 ÀîÏÈ¾²<xianjimli@hotmail.com> ´´½¨¡£
+ * ä¿®æ”¹å†å²ï¼š
+ *     1.2017-4-30 æå…ˆé™<xianjimli@hotmail.com> åˆ›å»ºã€‚
  */
 
 #ifndef TYPES_DEF_H
@@ -104,34 +104,34 @@ typedef __uint32_t uint32_t;
 #ifdef NDEBUG
 #define ENSURE(p) p
 #define return_if_fail(p) \
-  if (!(p)) {             \
-    return;               \
-  }
+    if (!(p)) {           \
+        return;           \
+    }
 #define break_if_fail(p) \
-  if (!(p)) {            \
-    break;               \
-  }
+    if (!(p)) {          \
+        break;           \
+    }
 #define return_value_if_fail(p, value) \
-  if (!(p)) {                          \
-    return (value);                    \
-  }
+    if (!(p)) {                        \
+        return (value);                \
+    }
 #else
 #define ENSURE(p) assert(p)
-#define break_if_fail(p)                              \
-  if (!(p)) {                                         \
-    printf("%s:%d " #p "\n", __FUNCTION__, __LINE__); \
-    break;                                            \
-  }
-#define return_if_fail(p)                             \
-  if (!(p)) {                                         \
-    printf("%s:%d " #p "\n", __FUNCTION__, __LINE__); \
-    return;                                           \
-  }
-#define return_value_if_fail(p, value)                \
-  if (!(p)) {                                         \
-    printf("%s:%d " #p "\n", __FUNCTION__, __LINE__); \
-    return (value);                                   \
-  }
+#define break_if_fail(p)                                  \
+    if (!(p)) {                                           \
+        printf("%s:%d " #p "\n", __FUNCTION__, __LINE__); \
+        break;                                            \
+    }
+#define return_if_fail(p)                                 \
+    if (!(p)) {                                           \
+        printf("%s:%d " #p "\n", __FUNCTION__, __LINE__); \
+        return;                                           \
+    }
+#define return_value_if_fail(p, value)                    \
+    if (!(p)) {                                           \
+        printf("%s:%d " #p "\n", __FUNCTION__, __LINE__); \
+        return (value);                                   \
+    }
 #endif
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
@@ -141,8 +141,8 @@ typedef void (*destroy_t)(void* data);
 typedef bool_t (*visit_t)(void* ctx, void* data);
 
 typedef struct _pointer_t {
-  void* data;
-  destroy_t destroy;
+    void* data;
+    destroy_t destroy;
 } pointer_t;
 
 #endif /*TYPES_DEF_H*/
